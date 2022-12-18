@@ -24,7 +24,7 @@
 
 <script setup>
 
-import { reactive, computed } from 'vue'
+import { reactive, computed, watch } from 'vue'
 
 const appTitle = ' My OK Counter App '
 
@@ -32,6 +32,12 @@ const appTitle = ' My OK Counter App '
 const counterData = reactive({
   count: 0,
   title: 'My Counter'
+})
+
+watch(()  => counterData.count, (newCount) => {
+  if(newCount ===20){
+    alert('Way To Go! 20 Goal!!')
+  }
 })
 
 const oddOrEven = computed(() => {
