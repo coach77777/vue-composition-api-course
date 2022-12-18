@@ -1,92 +1,55 @@
-<!-- Template Sxn************* -->
 <template>
   <div class="home">
+    
+    <h2>{{  appTitle }}</h2>
+
+    <h3>{{ counterData.title }}:</h3>
+
     <div>
       <button @click="decreaseCounter" class="btn">-</button>
-      <span class="counter">{{ counter }}</span>
+      <span class="counter">{{ counterData.count }}</span>
       <button @click="increaseCounter" class="btn">+</button>
     </div>
+
+    <div class="edit">
+      <h4>Edit counter title:</h4>
+      <input v-model="counterData.title" type="text">
+    </div>
+
   </div>
 </template>
-<!-- END Template Sxn************* -->
 
-<!-- Script Setup Pattern -->
 <script setup>
-import { ref } from "vue";
+// import { ref, reactive } from 'vue'
+import { reactive } from 'vue'
 
-const counter = ref(0);
+const appTitle = ' My OK Counter App '
 
+// const counter = ref(0),
+//    counterTitle = ref('My Counter')
+
+const counterData = reactive({
+  count: 0,
+  title: 'My Counter'
+})
 const increaseCounter = () => {
-  counter.value++;
-};
-
+  counterData.count++
+}
 const decreaseCounter = () => {
-  counter.value--;
-};
-</script>
-
-<!--  Options API
-<script>
-
-export default {
-  data() {
-    return {
-      counter: 0
-    }
-  },
-// Methods
-  methods: {
-
-   // add to the the Counter
-    increaseCounter() {
-      this.counter++
-    },
-
-     // minus the Counter
-    decreaseCounter() {
-      this.counter--
-    }
-  }
+  counterData.count--
 }
 </script>
-script sxn -->
 
-<!-- Setup pattern 
-<script>
-import { ref } from 'vue'
-
-export default {
-  setup() {
-    const counter = ref(0)
-
-    const increaseCounter = () => {
-      counter.value++
-    }
-
-    const decreaseCounter = () => {
-      counter.value--
-    }
-
-    return{
-      counter,
-      increaseCounter,
-      decreaseCounter
-    }
-  }
-}
-</script>
--->
-
-<!-- ************* StylesSxn************* -->
 <style>
 .home {
   text-align: center;
-  padding: 20 px;
+  padding: 20px;
 }
-
-.btn,
-.counter {
+.btn, .counter {
   font-size: 40px;
   margin: 10px;
+}
+.edit {
+  margin-top: 60px;
 }
 </style>
