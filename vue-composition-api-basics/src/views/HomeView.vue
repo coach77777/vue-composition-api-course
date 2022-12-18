@@ -24,7 +24,7 @@
 
 <script setup>
 
-import { reactive, computed, watch } from 'vue'
+import { reactive, computed, watch, onBeforeMount, onMounted, onBeforeUnmount, onUnmounted } from 'vue'
 
 const appTitle = ' My OK Counter App '
 
@@ -40,11 +40,16 @@ watch(()  => counterData.count, (newCount) => {
   }
 })
 
+
+
 const oddOrEven = computed(() => {
   if (counterData.count % 2 === 0) 
   return 'even'
   return 'odd'
 } )
+
+
+
 
 const increaseCounter = (amount, e) => {
   //for event properties-------console.log(e)
@@ -57,6 +62,19 @@ const increaseCounter = (amount, e) => {
 const decreaseCounter = amount => {
   counterData.count -= amount
 }
+
+onBeforeMount(() => {
+  console.log('onBeforeMount')
+}),
+onMounted(() => {
+  console.log('onMounted')
+}),
+onBeforeUnmount(() => {
+  console.log('onBeforeUnmount')
+}),
+onUnmounted(() => {
+  console.log('Unmounted')
+})
 </script>
 
 <style>
