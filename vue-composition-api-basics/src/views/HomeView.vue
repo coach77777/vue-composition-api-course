@@ -1,42 +1,55 @@
 <template>
   <div class="home">
-    
-    <h2>{{  appTitle }}</h2>
+    <h2>{{ appTitle }}</h2>
 
     <h3>{{ counterData.title }}:</h3>
 
     <div>
-      <button @click="decreaseCounter" class="btn">-</button>
+      <button @click="decreaseCounter(2)" class="btn">--</button>
+      <button @click="decreaseCounter(1)" class="btn">-</button>
       <span class="counter">{{ counterData.count }}</span>
-      <button @click="increaseCounter" class="btn">+</button>
+      <!-- //pass in parameters -->
+      <button @click="increaseCounter(1, $event)" class="btn">+</button>
+      <button @click="increaseCounter(2)" class="btn">++</button>
     </div>
+
+    <p>This counter is {{ oddOrEven }}.</p>
 
     <div class="edit">
       <h4>Edit counter title:</h4>
-      <input v-model="counterData.title" type="text">
+      <input v-model="counterData.title" type="text" />
     </div>
-
   </div>
 </template>
 
 <script setup>
-// import { ref, reactive } from 'vue'
-import { reactive } from 'vue'
+
+import { reactive, computed } from 'vue'
 
 const appTitle = ' My OK Counter App '
 
-// const counter = ref(0),
-//    counterTitle = ref('My Counter')
 
 const counterData = reactive({
   count: 0,
   title: 'My Counter'
 })
-const increaseCounter = () => {
-  counterData.count++
+
+const oddOrEven = computed(() => {
+  if (counterData.count % 2 === 0) 
+  return 'even'
+  return 'odd'
+} )
+
+const increaseCounter = (amount, e) => {
+  //for event properties-------console.log(e)
+  // counterData.count++
+  // console.log(amount)
+  // counterData.count = counterData.count + amount
+  //shorthand
+  counterData.count += amount
 }
-const decreaseCounter = () => {
-  counterData.count--
+const decreaseCounter = amount => {
+  counterData.count -= amount
 }
 </script>
 
@@ -45,10 +58,13 @@ const decreaseCounter = () => {
   text-align: center;
   padding: 20px;
 }
-.btn, .counter {
+
+.btn,
+.counter {
   font-size: 40px;
   margin: 10px;
 }
+
 .edit {
   margin-top: 60px;
 }
