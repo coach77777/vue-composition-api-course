@@ -1,4 +1,3 @@
-
 <!-- Template Sxn************* -->
 <template>
   <div class="home">
@@ -9,10 +8,24 @@
     </div>
   </div>
 </template>
-<!-- Template Sxn************* -->
+<!-- END Template Sxn************* -->
 
+<!-- Script Setup Pattern -->
+<script setup>
+import { ref } from "vue";
 
-<!--  script sxn -->
+const counter = ref(0);
+
+const increaseCounter = () => {
+  counter.value++;
+};
+
+const decreaseCounter = () => {
+  counter.value--;
+};
+</script>
+
+<!--  Options API
 <script>
 
 export default {
@@ -36,7 +49,33 @@ export default {
   }
 }
 </script>
+script sxn -->
 
+<!-- Setup pattern 
+<script>
+import { ref } from 'vue'
+
+export default {
+  setup() {
+    const counter = ref(0)
+
+    const increaseCounter = () => {
+      counter.value++
+    }
+
+    const decreaseCounter = () => {
+      counter.value--
+    }
+
+    return{
+      counter,
+      increaseCounter,
+      decreaseCounter
+    }
+  }
+}
+</script>
+-->
 
 <!-- ************* StylesSxn************* -->
 <style>
