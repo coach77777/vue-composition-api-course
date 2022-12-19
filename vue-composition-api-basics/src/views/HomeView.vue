@@ -1,3 +1,4 @@
+<!-- Template -->
 <template>
   <div class="home">
     <h2>{{ appTitle }}</h2>
@@ -22,13 +23,26 @@
   </div>
 </template>
 
+<!-- Scripts -->
 <script setup>
+/* 
+imports
+ */
+import { reactive, computed, watch, onMounted } from 'vue'
 
-import { reactive, computed, watch, onBeforeUpdate, onUpdated } from 'vue'
-
+/* 
+App Title
+ */
 const appTitle = ' My OK Counter App '
 
+onMounted(() =>{
+  console.log('Do Stuff related To app title')
+})
 
+
+/* 
+Counter
+ */
 const counterData = reactive({
   count: 0,
   title: 'My Counter'
@@ -40,16 +54,11 @@ watch(()  => counterData.count, (newCount) => {
   }
 })
 
-
-
 const oddOrEven = computed(() => {
   if (counterData.count % 2 === 0) 
   return 'even'
   return 'odd'
 } )
-
-
-
 
 const increaseCounter = (amount, e) => {
   //for event properties-------console.log(e)
@@ -63,14 +72,13 @@ const decreaseCounter = amount => {
   counterData.count -= amount
 }
 
-onBeforeUpdate(() => {
-  console.log('onBeforeUpdate')
-}),
-onUpdated(() => {
-console.log('onUpdated')
+onMounted(() =>{
+  console.log('Do Stuff related To Counter')
 })
+
 </script>
 
+<!-- Styles -->
 <style>
 .home {
   text-align: center;
