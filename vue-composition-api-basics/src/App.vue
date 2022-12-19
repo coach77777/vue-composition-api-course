@@ -10,7 +10,6 @@
       <component :is="Component" />
     </keep-alive>
   </router-view> -->
-  
 </template>
 
 <style>
