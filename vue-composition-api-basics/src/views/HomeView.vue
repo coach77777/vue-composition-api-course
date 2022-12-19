@@ -24,7 +24,7 @@
 
 <script setup>
 
-import { reactive, computed, watch, onBeforeMount, onMounted, onBeforeUnmount, onUnmounted } from 'vue'
+import { reactive, computed, watch, onBeforeMount, onMounted, onBeforeUnmount, onUnmounted, onActivated, onDeactivated} from 'vue'
 
 const appTitle = ' My OK Counter App '
 
@@ -73,7 +73,13 @@ onBeforeUnmount(() => {
   console.log('onBeforeUnmount')
 }),
 onUnmounted(() => {
-  console.log('Unmounted')
+  console.log('onUnmounted')
+})
+onActivated(() => {
+  console.log('onActivated')
+})
+onDeactivated(() => {
+  console.log('onDeactivated')
 })
 </script>
 
