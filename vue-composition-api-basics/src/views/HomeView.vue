@@ -29,6 +29,7 @@
 imports
  */
 import { reactive, computed, watch, onMounted } from 'vue'
+import  {vAutofocus} from '@/directives/vAutofocus'
 
 /* 
 App Title
@@ -80,11 +81,7 @@ onMounted(() =>{
 Directives
  */
 
-const vAutofocus ={
-  mounted: (el) => {
-el.focus()
-  }
-}
+
 
 
 </script>
