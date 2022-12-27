@@ -12,7 +12,7 @@
     <button @click="showModal = true">Show modal</button>
     <component
      v-model = "showModal"
-      :is="Modal"
+      :is="showDarkModals ? ModalDark :Modal"
      title="My modal title(via prop)">
 
       <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum iure incidunt ad mollitia, eos, consectetur
@@ -28,6 +28,7 @@ import
 */
 import { ref } from 'vue'
 import Modal from '@/components/Modal.vue'
+import ModalDark from '@/components/ModalDark.vue'
 
 
 /*
