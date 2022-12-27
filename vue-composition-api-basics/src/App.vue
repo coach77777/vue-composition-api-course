@@ -13,7 +13,7 @@
   </nav>
 
 
-  <RouterView  :userData = "userData" />
+  <RouterView />
   <!-- // Vue3  KeepAlive-->
   <!-- <router-view v-slot="{ Component }">
     <keep-alive>
@@ -30,7 +30,7 @@
 /* 
 Imports
 */
-import { reactive } from 'vue';
+import { reactive, provide } from 'vue';
 
 
 /* 
@@ -42,7 +42,7 @@ name: 'Danny' ,
 username: 'dannyconnell'
 })
 
-
+provide('userData', userData)
 
 </script>
 
