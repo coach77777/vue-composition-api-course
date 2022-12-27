@@ -1,14 +1,16 @@
 <template>
-<div class="modals">
-  <h1>Modals</h1>
-  <button @click="showModal = true">Show modal</button>
-<Modal v-if="showModal"
-title="My modal title(via prop)">
+  <div class="modals">
+    <h1>Modals</h1>
+    <button @click="showModal = true">Show modal</button>
+    <Modal 
+     v-model = "showModal"
+     @hideModal="showModal = false" title="My modal title(via prop)">
 
-<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum iure incidunt ad mollitia, eos, consectetur laudantium impedit in veritatis aperiam excepturi quasi quibusdam repellat natus fugit eius vero unde ea.</p>
-</Modal>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum iure incidunt ad mollitia, eos, consectetur
+        laudantium impedit in veritatis aperiam excepturi quasi quibusdam repellat natus fugit eius vero unde ea.</p>
+    </Modal>
 
-</div>
+  </div>
 </template>
 
 <script setup>

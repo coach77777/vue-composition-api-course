@@ -1,10 +1,18 @@
 <template>
   <teleport to="body">
-    <div  class="modal">
+    <div  
+    v-if="modelValue"
+    class="modal">
       <h1>{{  title }}</h1>
       <!-- <h1><slot name="title" /></h1> -->
 <slot />
-      <button>Hide modal</button>
+      <!-- <button @click=
+      "$emit('hideModal') "> -->
+
+
+      <button @click=
+      "handleButtonClick">
+        Hide modal</button>
     </div>
   </teleport>
 
@@ -17,17 +25,34 @@
 props Composition Way
 */
 const props = defineProps({
+  modelValue: {
+    type: Boolean,
+    default: false
+  },
   title: {
       type: String,
       default: 'No Title here'
     }
   })
 
+  /* 
+emits Composition Way
+*/
+const emit = defineEmits(['hideModal'])
+
+  /* 
+emits Composition Way
+*/
+
+const handleButtonClick = () => {
+  emit('hideModal')
+}
 </script>
 
 <!-- Options
   <script>
   export default{
+     emits: [hideModal],
   props: {
     title: {
       type: String,
