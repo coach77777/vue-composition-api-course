@@ -11,6 +11,9 @@
 
 
       <button @click="$emit('update:modelValue', false)">Hide modal</button>
+      <div>
+        Username is: {{ userData.username }}
+      </div>
     </div>
   </teleport>
 
@@ -30,6 +33,9 @@ const props = defineProps({
   title: {
       type: String,
       default: 'No Title here'
+    },
+    userData: {
+      type: Object
     }
   })
 

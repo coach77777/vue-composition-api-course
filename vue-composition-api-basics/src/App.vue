@@ -1,10 +1,19 @@
 <template>
+  <div class="user-data">
+    {{ userData.name }} @{{ userData.username }}
+
+
+  </div>
+
+
   <nav>
     <RouterLink to="/">Home</RouterLink>
     <RouterLink to="/modals">Modals</RouterLink>
     <RouterLink to="/posts">Posts</RouterLink>
   </nav>
-  <RouterView />
+
+
+  <RouterView  :userData = "userData" />
   <!-- // Vue3  KeepAlive-->
   <!-- <router-view v-slot="{ Component }">
     <keep-alive>
@@ -12,6 +21,30 @@
     </keep-alive>
   </router-view> -->
 </template>
+
+
+
+
+<script setup>
+
+/* 
+Imports
+*/
+import { reactive } from 'vue';
+
+
+/* 
+Userdata
+*/
+
+const userData = reactive({
+name: 'Danny' ,
+username: 'dannyconnell'
+})
+
+
+
+</script>
 
 <style>
 @import '@/assets/base.css';
@@ -68,5 +101,13 @@ h1 {
   margin-inline-start: 0px;
   margin-inline-end: 0px;
   font-weight: bold;
+}
+.user-data {
+  position: absolute;
+  background: beige;
+  top: 0;
+  right:0;
+  padding: 5px;
+  font-size:12px
 }
 </style>
