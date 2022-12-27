@@ -10,9 +10,7 @@
       "$emit('hideModal') "> -->
 
 
-      <button @click=
-      "handleButtonClick">
-        Hide modal</button>
+      <button @click="$emit('update:modelValue', false)">Hide modal</button>
     </div>
   </teleport>
 
@@ -38,15 +36,15 @@ const props = defineProps({
   /* 
 emits Composition Way
 */
-const emit = defineEmits(['hideModal'])
+const emit = defineEmits(['update:modelValue'])
 
   /* 
 emits Composition Way
 */
 
-const handleButtonClick = () => {
-  emit('hideModal')
-}
+// const handleButtonClick = () => {
+//   emit('update:modelValue', false)
+// }
 </script>
 
 <!-- Options

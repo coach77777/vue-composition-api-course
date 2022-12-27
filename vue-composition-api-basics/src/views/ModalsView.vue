@@ -4,7 +4,7 @@
     <button @click="showModal = true">Show modal</button>
     <Modal 
      v-model = "showModal"
-     @hideModal="showModal = false" title="My modal title(via prop)">
+     title="My modal title(via prop)">
 
       <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum iure incidunt ad mollitia, eos, consectetur
         laudantium impedit in veritatis aperiam excepturi quasi quibusdam repellat natus fugit eius vero unde ea.</p>
