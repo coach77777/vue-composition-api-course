@@ -4,11 +4,14 @@
     aria-label="main navigation"
     role="navigation"
   >
+  
     <div class="container is-max-desktop px-2">
       <div class="navbar-brand">
         <div class="navbar-item is-size-4 is-family-monospace">
           Noteballs
         </div>
+
+
 
         <a
           @click.prevent="showMobileNav = !showMobileNav"
@@ -19,6 +22,7 @@
           data-target="navbarBasicExample"
           role="button"
         >
+          
           <span aria-hidden="true"></span>
           <span aria-hidden="true"></span>
           <span aria-hidden="true"></span>
@@ -50,6 +54,7 @@
     </div>
   </nav>
 </template>
+
 
 <script setup>
 /*
