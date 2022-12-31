@@ -1,38 +1,32 @@
 <template>
-<div class="notes">
+  <div class="notes">
 
-<div class="card has-background-success-dark p-4 mb-5">
-  <div class="field">
+    <div class="card has-background-success-dark p-4 mb-5">
+      <div class="field">
+        <div class="control">
+          <textarea
+            v-model="newNote"
+            class="textarea"
+            placeholder="Add a New Note"
+            ref="newNoteRef"
+          />
+        </div>
+      </div>
 
-    <div class="control">
-     <textarea
-     v-model="newNote"
-        class="textarea"
-        placeholder="Add a New Note"
-        ref = "newNoteRef"
-      />
+      <div class="field is-grouped is-grouped-right">
+        <div class="control">
+         <button
+           :disabled="!newNote"
+           @click="addNote"
+           class="button is-link has-background-success"
+         >Add New Note</button>
+        </div>
+      </div>
     </div>
-  </div>
-  
-  <div class="field is-grouped is-grouped-right">
-    <div class="control">
-     <button
-     @click="addNote"
-     :disabled="!newNote"
-        class="button is-link has-background-success"
-      >Add New Note</button>
-    </div>
-  </div>
-</div>
 
- <Note 
- v-for ="note in notes"
- :key="note.id"
- :note="note"
- @deleteClicked="deleteNote"/>
-  
-</div>
+    <Note v-for="note in storeNotes.notes" :key="note.id" :note="note" @deleteClicked="deleteNote" />
 
+  </div>
 </template>
 
 <script setup>
@@ -41,6 +35,13 @@ Imports
 */
 import { ref } from 'vue'
 import Note from '@/components/Notes/Note.vue'
+import { useStoreNotes } from '@/stores/storeNotes.js'
+
+/*
+store
+*/
+
+const storeNotes = useStoreNotes()
 
 /*
 notes
@@ -48,35 +49,21 @@ notes
 const newNote = ref('')
 const newNoteRef = ref(null)
 
+const addNote = () => {
 
+  storeNotes.addNote()
+  // let currentDate = new Date().getTime(),
+  //   id = currentDate.toString()
 
+  // let note = {
+  //   id,
+  //   content: newNote.value
+  // }
+  // // notes.value.push(note) or
+  // notes.value.unshift(note)
 
-const notes = ref([
-{
-  id: 'id1',
-  content: 'l Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui atque tenetur, porro soluta tempora excepturi odio. Placeat, ipsa fuga. Et voluptates inventore nostrum ratione porro molestiae quas maxime suscipit numquam.'
-},
-{
-  id: 'id2',
-  content: 'l am short note.'
-},
-
-
-])
-
-const addNote = () =>{
-let currentDate = new Date().getTime(),
-   id = currentDate.toString()
-
- let note = {
- id,
- content: newNote.value
-}
-// notes.value.push(note) or
-notes.value.unshift(note)
-
-newNote.value = " "
-newNoteRef.value.focus()
+  newNote.value = " "
+  newNoteRef.value.focus()
 }
 
 /*
@@ -84,8 +71,10 @@ Delete Note
 */
 
 const deleteNote = idToDelete => {
-notes.value = notes.value.filter(note => { return note.id 
-!== idToDelete})
+  notes.value = notes.value.filter(note => {
+    return note.id
+      !== idToDelete
+  })
 }
 </script>
 
