@@ -1,11 +1,44 @@
 <template>
 
   <div class="edit-note">
-    <h1>Edit Note with id of : {{ $route.params.id }}</h1>
+    <AddEditNote 
+    v-model="noteContent"
+    bgColor="link"
+    placeholder="Edit Note"
+    label="Edit Note"
+    ref="addEditNoteRef">
+      <template #buttons>
+
+      <RouterLink to="/"
+      class="button is-link is-light"
+    >
+    Cancel
+  </RouterLink>
+  <button
+  class="button is-link has-background-link"
+:disabled="!noteContent"
+>
+Save Note
+</button>
+
+      </template>
+    </AddEditNote>
+
   </div>
 </template>
 
 <script setup>
+
+/*
+imports
+*/
+import { ref } from 'vue';
+import AddEditNote from '@/components/Notes/AddEditNote.vue';
+
+/*
+note
+*/
+const noteContent = ref('')
 
 </script>
 
