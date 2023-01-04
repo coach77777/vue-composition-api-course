@@ -33,6 +33,8 @@
 imports
 */
 import {ref} from 'vue'
+import { vAutofocus } from '@/directives/vAutofocus'
+
 /*
 props
 */
@@ -77,10 +79,6 @@ defineExpose({
 /*
   directives
 */
-const vAutofocus = {
-    mounted: (el) => {
-      el.focus()
-    }
-  }
+
 
 </script>

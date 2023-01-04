@@ -19,6 +19,12 @@
   
     </tbody>
   </table>
+  <input
+  class="input"
+  type = "text"
+  placeholder="Do You Like Vue?"
+  v-autofocus
+  />
 </div>
 
 </template>
@@ -29,7 +35,7 @@ imports
 */
 
 import {useStoreNotes} from '@/stores/storeNotes'
-
+import { vAutofocus } from '@/directives/vAutofocus'
 /* 
 store
 */
