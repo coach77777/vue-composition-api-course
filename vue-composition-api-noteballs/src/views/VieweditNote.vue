@@ -10,14 +10,12 @@
       <template #buttons>
 
       <RouterLink to="/"
-      class="button is-link is-light"
+      class="button is-link is-light mr-3"
     >
     Cancel
   </RouterLink>
-  <button
-  class="button is-link has-background-link"
-:disabled="!noteContent"
->
+ <button :disabled="!noteContent" @click="handleSaveClicked" 
+ class="button is-link has-background-link">
 Save Note
 </button>
 
@@ -32,8 +30,8 @@ Save Note
 /*
 imports
 */
-import { ref } from 'vue';
-import { useRoute } from 'vue-router'
+import { ref } from 'vue'
+import { useRoute, useRouter } from 'vue-router'
 import AddEditNote from '@/components/Notes/AddEditNote.vue'
 import { useStoreNotes } from '@/stores/storeNotes'
 
@@ -41,6 +39,7 @@ import { useStoreNotes } from '@/stores/storeNotes'
 router
 */
 const route = useRoute()
+const router = useRouter()
 /*
 store
 */
@@ -50,11 +49,17 @@ const storeNotes = useStoreNotes()
 note
 */
 const noteContent = ref('')
-console.log(route.params.id);
-
- noteContent.value = storeNotes.getNoteContent
 
 
+noteContent.value = storeNotes.getNoteContent(route.params.id)
+
+/*
+save-clicked
+*/
+const handleSaveClicked = () => {
+    storeNotes.updateNote(route.params.id, noteContent.value)
+    router.push('/')
+  }
 
 </script>
 

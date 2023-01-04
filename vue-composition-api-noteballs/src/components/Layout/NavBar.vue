@@ -36,13 +36,18 @@
       >
         <div class="navbar-end">
           <RouterLink
+          @click="showMobileNav =false
+          "
             to="/"
             class="navbar-item"
             active-class="is-active"
           >
             Notes
-          </RouterLink>
+          </RouterLink
+        >
           <RouterLink
+          @click="showMobileNav =false
+          "
             to="/stats"
             class="navbar-item"
             active-class="is-active"
