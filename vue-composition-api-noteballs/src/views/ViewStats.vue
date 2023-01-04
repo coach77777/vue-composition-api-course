@@ -20,6 +20,7 @@
     </tbody>
   </table>
   <input
+  v-model="loveNoteballs"
   class="input"
   type = "text"
   placeholder="Do You Like Vue?"
@@ -33,14 +34,22 @@
 /*
 imports
 */
-
+import { ref } from 'vue'
 import {useStoreNotes} from '@/stores/storeNotes'
 import { vAutofocus } from '@/directives/vAutofocus'
+import { useWatchCharacters } from '@/use/useWatchCharacters'
 /* 
 store
 */
 
 const storeNotes = useStoreNotes()
+
+/* 
+noteballs
+*/
+const loveNoteballs = ref(' ')
+useWatchCharacters(loveNoteballs)
+
 
 </script>
 
