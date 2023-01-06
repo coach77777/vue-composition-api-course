@@ -24,7 +24,12 @@
         >
         Cancel
         </button>
-        <button class="button is-danger">Delete</button>
+        <button
+        @click="storeNotes.deleteNote(noteId)"
+        class="button is-danger"
+      >
+        Delete
+      </button>
         
       </footer>
     </div>
@@ -37,6 +42,7 @@ imports
 */
 import { ref, onMounted, onUnmounted} from 'vue'
   import { onClickOutside } from '@vueuse/core'
+  import { useStoreNotes } from '@/stores/storeNotes'
 
 /*
 props
@@ -45,7 +51,11 @@ const props = defineProps({
   modelValue: {
     type: Boolean,
     default: false
-  }
+  },
+  noteId: {
+      type: String,
+      required: true
+    }
 })
 
 /*
@@ -55,6 +65,11 @@ const emit= defineEmits([
   'update:modelValue'
 ]
 )
+
+/*
+  store
+*/
+const storeNotes = useStoreNotes()
 
 /*
 close modal
